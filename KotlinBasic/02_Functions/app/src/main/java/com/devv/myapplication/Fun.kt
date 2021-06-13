@@ -9,7 +9,7 @@ fun main() {
 
 
 fun solveEquation(a: Int, b: Int, c: Int): Double {
-    val discriminant =( (b * b) - (4 * a * c).toDouble())
+    val discriminant = b * b - 4.0 * a * c
     val x1 = ((-b) + sqrt(discriminant)) / (2 * a)
     val x2 = ((-b) - sqrt(discriminant)) / (2 * a)
 
