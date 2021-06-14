@@ -1,0 +1,2 @@
+rootProject.name = "Extensions_Objects_Enums"
+include ':app'
