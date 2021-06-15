@@ -11,12 +11,12 @@ fun main() {
 }
 
 fun Loop(n: Int) {
-    var Number = 0
-    while (Number < n) {
+    var number = 0
+    while (number < n) {
         println("ведите число")
         val numberString = readLine()?.toIntOrNull() ?: continue
         if (numberString != null) {
-            Number++
+            number++
         }
     }
 }
