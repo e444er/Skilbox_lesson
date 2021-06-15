@@ -15,7 +15,7 @@ fun Loop(n: Int) {
     while (number < n) {
         println("ведите число")
         val numberString = readLine()?.toIntOrNull() ?: continue
-        if (numberString != null) {
+        if (true) {
             number++
         }
     }
