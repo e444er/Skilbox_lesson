@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ViewAndLayout</string>
+    <string name="Login">Логин</string>
+    <string name="sog">Cоглашения</string>
+    <string name="hello">Hello Федор</string>
+    <string name="avatar">avatar</string>
+    <string name="toast">Поля логина или пароля не заполнены</string>
+    <string name="toast1">Логин прошёл успешно</string>
+</resources>
