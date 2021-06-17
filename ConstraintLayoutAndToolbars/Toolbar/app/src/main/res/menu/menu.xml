@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:title="menu"
+        android:id="@+id/ser"
+        app:actionViewClass="android.widget.SearchView"
+        android:icon="@drawable/ic_baseline_youtube_searched_for_24"
+        app:showAsAction="always"/>
+
+    <item android:title="lol"
+        android:id="@+id/back"
+        android:icon="@drawable/ic_back"
+        app:showAsAction="never"/>
+
+    <item android:title="wc"
+        android:id="@+id/wc"
+        android:icon="@drawable/ic_baseline_wc_24"
+        app:showAsAction="ifRoom"/>
+
+    <item android:title="view"
+    android:id="@+id/view"
+    android:icon="@drawable/ic_baseline_visibility_24"
+    app:showAsAction="collapseActionView"/>
+</menu>
