@@ -27,8 +27,10 @@ fun filter(resultFunc1: MutableList<String>) {
 }
 
 fun sum(resultFunc1: MutableList<String>) {
-    return println("Сумма длин всех номеров " +
-            "= ${resultFunc1.sumOf { it.length }}")
+    return println(
+        "Сумма длин всех номеров " +
+                "= ${resultFunc1.sumOf { it.length }}"
+    )
 }
 
 fun size(resultFunc1: MutableList<String>) {
