@@ -27,9 +27,9 @@ sealed class Wallets() {
         }
 
         override fun moneyInUSD(): Double {
-            val sunvirtual = ((EURO.convertToUSD(0) * (quantityEuro)) +
-                    RUB.convertToUSD(0) * (quantityRub) +
-                    USD.convertToUSD(0) * (quantityRub))
+            val sunvirtual = ((EURO.convertToUSD(10) * (quantityEuro)) +
+                    RUB.convertToUSD(10) * (quantityRub) +
+                    USD.convertToUSD(10) * (quantityRub))
             println("sum = $sunvirtual")
             return sunvirtual
         }

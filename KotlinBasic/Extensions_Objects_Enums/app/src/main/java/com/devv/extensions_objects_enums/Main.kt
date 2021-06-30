@@ -2,15 +2,13 @@ package com.devv.extensions_objects_enums
 
 
 fun main() {
-    val virtual = Wallets.VirtualWallets()
-    virtual.addMoneyVirtual(Currency.RUB, 90.0)
-    println(virtual)
 
-    val realWallets = Wallets.RealWallets()
-    realWallets.addMoneyReal(Currency.EURO, 31, 34.0)
-    println(realWallets)
 
+    val r = Wallets.RealWallets().addMoneyReal(Currency.EURO, 200, 4.5)
+    val v = Wallets.VirtualWallets().addMoneyVirtual(Currency.USD, 430.0)
     //не знаю что делать дальше
+    println(r)
+    println(v)
 
     println(Currency.RUB.convertToUSD(100))
     println(Currency.USD.convertToUSD(100))

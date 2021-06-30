@@ -21,10 +21,10 @@ val Currency.toNational: Boolean
     get() = this == Currency.national
 
 
-fun Currency.convertToUSD(count:Int): Double {
+fun Currency.convertToUSD(currency: Int): Double {
     return when (this) {
-        Currency.RUB -> SNAKE_CASE_RUB * count
-        Currency.USD -> SNAKE_CASE_USD * count
-        Currency.EURO -> SNAKE_CASE_EURO * count
+        Currency.RUB -> SNAKE_CASE_RUB * currency
+        Currency.USD -> SNAKE_CASE_USD * currency
+        Currency.EURO -> SNAKE_CASE_EURO * currency
     }
 }
