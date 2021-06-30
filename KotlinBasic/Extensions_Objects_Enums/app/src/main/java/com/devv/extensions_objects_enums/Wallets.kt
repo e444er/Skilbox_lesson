@@ -1,12 +1,15 @@
 package com.devv.extensions_objects_enums
 
 import com.devv.extensions_objects_enums.Currency.*
+import com.devv.extensions_objects_enums.Currency.Companion.SNAKE_CASE_EURO
+import com.devv.extensions_objects_enums.Currency.Companion.SNAKE_CASE_RUB
+import com.devv.extensions_objects_enums.Currency.Companion.SNAKE_CASE_USD
 
 sealed class Wallets() {
 
     abstract fun moneyInUSD(): Double
 
-    class virtualWallets : Wallets() {
+    class VirtualWallets : Wallets() {
         private var quantityRub = 0.0
         private var quantityUsd = 0.0
         private var quantityEuro = 0.0
@@ -24,23 +27,23 @@ sealed class Wallets() {
         }
 
         override fun moneyInUSD(): Double {
-            val sunvirtual = ((EURO.convertToUSD() * (quantityEuro)) +
-                    RUB.convertToUSD() * (quantityRub) +
-                    USD.convertToUSD() * (quantityRub))
+            val sunvirtual = ((EURO.convertToUSD(0) * (quantityEuro)) +
+                    RUB.convertToUSD(0) * (quantityRub) +
+                    USD.convertToUSD(0) * (quantityRub))
             println("sum = $sunvirtual")
             return sunvirtual
         }
     }
 
 
-    class realWallets(
+    class RealWallets(
     ) : Wallets() {
         private var quantityRub = 0.0
         private var quantityUsd = 0.0
         private var quantityEuro = 0.0
-        private var realRub: MutableMap<Int, Double> = mutableMapOf()
-        private var realUsd: MutableMap<Int, Double> = mutableMapOf()
-        private var realEuro: MutableMap<Int, Double> = mutableMapOf()
+        private var realRub = mutableMapOf<Int, Double>()
+        private var realUsd = mutableMapOf<Int, Double>()
+        private var realEuro = mutableMapOf<Int, Double>()
 
 
         fun addMoneyReal(
@@ -48,7 +51,7 @@ sealed class Wallets() {
             parOf: Int,
             quant: Double
         ): Double? {
-           return when (type) {
+            return when (type) {
                 RUB -> realRub.put(parOf, quant)
                 EURO -> realEuro.put(parOf, quant)
                 USD -> realUsd.put(parOf, quant)
@@ -56,11 +59,11 @@ sealed class Wallets() {
         }
 
         override fun moneyInUSD(): Double {
-           return when(RUB) {
-                RUB -> quantityRub * CurrencyConverter.rubtoUsd
-                USD -> quantityUsd * CurrencyConverter.usdtoUsd
-                EURO -> quantityEuro * CurrencyConverter.eurotoUsd
-           }
+            return when (RUB) {
+                RUB -> quantityRub * SNAKE_CASE_RUB
+                USD -> quantityUsd * SNAKE_CASE_USD
+                EURO -> quantityEuro * SNAKE_CASE_EURO
+            }
 
         }
 
