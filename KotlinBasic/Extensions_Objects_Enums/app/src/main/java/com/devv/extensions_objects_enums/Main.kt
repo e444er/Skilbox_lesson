@@ -3,10 +3,9 @@ package com.devv.extensions_objects_enums
 
 fun main() {
 
+    val r = Wallets.RealWallets().addMoneyReal(type = Currency.EURO, parOf = 200, quant = 4.5)
+    val v = Wallets.VirtualWallets().addMoneyVirtual(type = Currency.USD, quant = 430.0)
 
-    val r = Wallets.RealWallets().addMoneyReal(Currency.EURO, 200, 4.5)
-    val v = Wallets.VirtualWallets().addMoneyVirtual(Currency.USD, 430.0)
-    //не знаю что делать дальше
     println(r)
     println(v)
 
