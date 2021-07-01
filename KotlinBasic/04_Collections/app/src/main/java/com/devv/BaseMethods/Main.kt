@@ -1,11 +1,11 @@
 package com.devv.BaseMethods
 
 fun main() {
-    val person1 = Person(173, 67, "Eminem")
-    val person2 = Person(170, 67, "Бауыржан")
+    val person1 = Person(energy = 173, weight = 67, name = "Eminem")
+    val person2 = Person(energy = 170, weight = 67, name = "Бауыржан")
     val people = mutableSetOf(person1, person2)
     println(people.count())
-    val person3 = Person(180, 90, "Бэтман")
+    val person3 = Person(energy = 180, weight = 90, name = "Бэтман")
     people.add(person3)
     people.forEach() {
         println(it.buyPet())
