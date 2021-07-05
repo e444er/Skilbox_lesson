@@ -3,7 +3,7 @@ package com.devv.KotlinHighOrderFunctionAndException
 fun main() {
     val imit = Wheel()
     imit.check(2.0)
-    println(imit)
+    imit.setPressure(2.0)
 }
 
 class Wheel(
@@ -14,7 +14,7 @@ class Wheel(
     class IncorrectPressure : Throwable()
 
     fun setPressure(value: Double) {
-        if (value < 0.0 || value > 10.0)
+        if (value < pressure || value > 10.0)
             throw  IncorrectPressure()
         else
             println("давление норм $value")
