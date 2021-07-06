@@ -2,11 +2,11 @@ package com.devv.viewandlayout
 
 import android.os.Bundle
 import android.os.Handler
-import android.text.Editable
-import android.text.TextWatcher
+import android.os.Looper
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
 import com.devv.viewandlayout.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -18,48 +18,34 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.editText.doOnTextChanged { text, start, before, count ->
+            binding.button.isEnabled = text?.isNotEmpty() ?: false
+        }
 
-        binding.editText.addTextChangedListener(object : TextWatcher{
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                binding.button.isEnabled = s?.let { it.isNotEmpty()  } ?: false
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-            }
-        })
-
-        binding.editText2.addTextChangedListener(object : TextWatcher{
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                binding.button.isEnabled = s?.let { it.isNotEmpty()  } ?: false
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-            }
-        })
+        binding.editText2.doOnTextChanged { text, start, before, count ->
+            binding.button.isEnabled = text?.isNotEmpty() ?: false
+        }
 
         binding.checkBox.setOnCheckedChangeListener { checkView, isChecked ->
-            if (isChecked){
+            if (isChecked) {
                 binding.button.isEnabled = true
             }
         }
 
-
-        binding.button.setOnClickListener{
-            if(binding.editText.toString().isNotEmpty() || binding.editText2.toString().isNotEmpty()
-                || binding.checkBox.isChecked){
+        binding.button.setOnClickListener {
+            if (binding.editText.toString().isNotEmpty() || binding.editText2.toString()
+                    .isNotEmpty()
+                || binding.checkBox.isChecked
+            ) {
                 click()
-                Handler().postDelayed({
+                Handler(Looper.getMainLooper()).postDelayed({
                     stop()
                 }, 2000)
-            }else{
-                Toast.makeText(this, R.string.toast,
-                    Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(
+                    this, R.string.toast,
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
@@ -70,6 +56,7 @@ class MainActivity : AppCompatActivity() {
         binding.checkBox.isEnabled = false
         binding.progressBar.visibility = View.VISIBLE
     }
+
     private fun stop() {
         binding.progressBar.visibility = View.GONE
         Toast.makeText(this, R.string.toast1, Toast.LENGTH_SHORT).show()
