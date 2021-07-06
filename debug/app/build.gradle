@@ -26,11 +26,13 @@ android {
         qa {
             initWith debug
             applicationIdSuffix ".qa"
+            minifyEnabled true
         }
         release {
             signingConfig signingConfigs.debug
             applicationIdSuffix ".release"
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
