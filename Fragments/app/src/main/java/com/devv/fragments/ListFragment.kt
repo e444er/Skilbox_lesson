@@ -16,7 +16,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     private lateinit var binding: FragmentListBinding
 
     private val itemListener: ItemListener?
-    get() = activity?.let { it as? ItemListener }
+        get() = activity?.let { it as? ItemListener }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -32,12 +32,18 @@ class ListFragment : Fragment(R.layout.fragment_list) {
             .forEach { button ->
                 button.setOnClickListener {
                     onClick()
+                    childFragmentManager.beginTransaction()
+                        .add(R.id.container, DetailFragment())
+                        .commit()
                 }
             }
+
+//            fragmentManager?.beginTransaction()?.replace(R.id.container, DetailFragment())?.commit()
+
     }
 
     override fun onDetach() {
-         super.onDetach()
+        super.onDetach()
     }
 
     private fun onClick() {
