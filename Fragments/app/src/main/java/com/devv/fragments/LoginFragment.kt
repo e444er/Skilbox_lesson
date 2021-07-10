@@ -22,11 +22,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             if (!isValid) {
                 Toast.makeText(context, "Email error", Toast.LENGTH_SHORT).show()
             } else {
-                fragmentManager?.beginTransaction()?.replace(R.id.container, MainFragment())?.commit()
-//                childFragmentManager.beginTransaction()
-//                    .add(R.id.container, MainFragment())
-//                    .commit()
-
+                parentFragmentManager.beginTransaction().replace(R.id.container, MainFragment())
+                    .commit()
             }
         }
     }

@@ -1,44 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListFragment">
+    android:gravity="top|center"
+    android:orientation="vertical"
+    android:background="@color/teal_200">
 
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/text_1.tv"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:text="What Tree is"
+        android:textSize="25sp"
+        android:textColor="@color/white"/>
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/text_2.tv"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:text="Number of trees"
+        android:textSize="25sp"
+        android:textColor="@color/white"/>
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/text_3.tv"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:text="Roots of tree"
+        android:textSize="25sp"
+        android:textColor="@color/white"/>
 
+    <TextView
+        android:id="@+id/text_4.tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:text="Trunk of tree"
+        android:textSize="25sp"
+        android:textColor="@color/white"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/text_5.tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:text="Leaves of tree"
+        android:textSize="25sp"
+        android:textColor="@color/white"/>
+
+</LinearLayout>
