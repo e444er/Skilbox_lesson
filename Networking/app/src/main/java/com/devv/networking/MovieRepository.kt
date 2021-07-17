@@ -9,8 +9,12 @@ import org.json.JSONObject
 
 class MovieRepository {
 
-    fun searchMovie(text: String, callback: (List<RemateMovie>) -> Unit): Call {
-        return getSearchMovieCall(text).apply {
+    fun searchMovie(
+        text: String,
+        text1: String,
+        typec: String, callback: (List<RemateMovie>) -> Unit
+    ): Call {
+        return getSearchMovieCall(text, text1, typec).apply {
             enqueue(object : Callback {
                 override fun onFailure(call: Call, e: java.io.IOException) {
                     callback(emptyList())
@@ -29,18 +33,6 @@ class MovieRepository {
         }
     }
 
-//        Thread {
-//            try {
-//                val response = getSearchMovieCall(text).execute()
-//                val responseString = response.body?.string().orEmpty()
-//                val movies = parseRes(responseString)
-//                callback(movies)
-//            } catch (e: IOException) {
-//                callback(emptyList())
-//            }
-//        }.start()
-
-
     private fun parseRes(responseBody: String): List<RemateMovie> {
         return try {
             val jsonObject = JSONObject(responseBody)
@@ -52,8 +44,10 @@ class MovieRepository {
                 val title = movieJsonObject.getString("Title")
                 val year = movieJsonObject.getString("Year")
                 val id = movieJsonObject.getString("imdbID")
+                val type = movieJsonObject.getString("Type")
+                val poster = movieJsonObject.getString("Poster")
 
-                RemateMovie(id = id, title = title, year = year)
+                RemateMovie(id = id, title = title, year = year, type = type, poster = poster)
             }
         } catch (e: JSONException) {
             return emptyList()

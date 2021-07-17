@@ -20,9 +20,9 @@ class MovieViewModel : ViewModel() {
     val isLoading: LiveData<Boolean>
         get() = isLoadingLiveData
 
-    fun search(text: String) {
+    fun search(text: String, text1: String, typec: String) {
         isLoadingLiveData.postValue(true)
-        currentCall = repository.searchMovie(text) { movies ->
+        currentCall = repository.searchMovie(text, text1, typec) { movies ->
             isLoadingLiveData.postValue(false)
             movieListLiveData.postValue(movies)
             currentCall = null

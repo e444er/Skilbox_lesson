@@ -29,8 +29,8 @@ class MovieDelegate :
 
     class MovieHolder(view: View) : MovieView(view) {
 
-        fun bind(remateMovie: RemateMovie){
-            bind(remateMovie.title,remateMovie.year)
+        fun bind(remateMovie: RemateMovie) {
+            bind(remateMovie.title, remateMovie.year, remateMovie.type, remateMovie.poster)
         }
     }
 }

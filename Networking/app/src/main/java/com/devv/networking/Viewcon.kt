@@ -1,8 +1,8 @@
 package com.devv.networking
 
 import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 
 fun ViewGroup.inflate(
