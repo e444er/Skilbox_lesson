@@ -11,10 +11,7 @@ class MovieAdapter : AsyncListDifferDelegationAdapter<RemateMovie>(MovieDiffUtil
 
     class MovieDiffUtil : DiffUtil.ItemCallback<RemateMovie>() {
         override fun areItemsTheSame(oldItem: RemateMovie, newItem: RemateMovie): Boolean {
-            return when {
-                oldItem is RemateMovie && newItem is RemateMovie -> oldItem.id == newItem.id
-                else -> false
-            }
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: RemateMovie, newItem: RemateMovie): Boolean {
