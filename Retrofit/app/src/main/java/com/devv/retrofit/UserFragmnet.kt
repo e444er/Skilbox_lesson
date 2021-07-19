@@ -5,6 +5,7 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devv.retrofit.databinding.UserFragmentBinding
 
@@ -18,6 +19,12 @@ class UserFragmnet : Fragment(R.layout.user_fragment) {
         binding = UserFragmentBinding.bind(view)
         initList()
         bindModel()
+        userAdapter?.setOnItemClickCallback(object : UserAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: ReamteUser) {
+                val action = UserFragmnetDirections.actionUserFragmnetToDetailUserFargment(username = data.username)
+                findNavController().navigate(action)
+            }
+        })
     }
 
     private fun initList() {

@@ -11,6 +11,12 @@ import com.devv.retrofit.databinding.UserListBinding
 class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     class UserViewHolder(val binding: UserListBinding) : RecyclerView.ViewHolder(binding.root) {}
 
+    private var onItemClickCallback: OnItemClickCallback? = null
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
     class DifferCallBack : DiffUtil.ItemCallback<ReamteUser>() {
         override fun areItemsTheSame(oldItem: ReamteUser, newItem: ReamteUser): Boolean {
             return oldItem.id == newItem.id
@@ -33,6 +39,9 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         with(holder) {
             val user = differ.currentList[position]
+            binding.root.setOnClickListener {
+                onItemClickCallback?.onItemClicked(user)
+            }
             itemView.apply {
                 Glide.with(this).load(user.avatar).into(binding.imageView)
                 binding.textView.text = user.username
@@ -42,5 +51,9 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     override fun getItemCount(): Int {
         return differ.currentList.size
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: ReamteUser)
     }
 }

@@ -9,6 +9,9 @@ object Network {
 
     private val client = OkHttpClient.Builder()
         .addNetworkInterceptor(
+            AddHeader(TOKEN)
+        )
+        .addNetworkInterceptor(
             HttpLoggingInterceptor()
                 .setLevel(HttpLoggingInterceptor.Level.BODY)
         ).build()

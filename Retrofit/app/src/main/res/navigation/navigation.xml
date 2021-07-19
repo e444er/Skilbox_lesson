@@ -9,5 +9,21 @@
         android:id="@+id/userFragmnet"
         android:name="com.devv.retrofit.UserFragmnet"
         android:label="user_fragment"
-        tools:layout="@layout/user_fragment" />
+        tools:layout="@layout/user_fragment" >
+        <action
+            android:id="@+id/action_userFragmnet_to_detailUserFargment"
+            app:destination="@id/detailUserFargment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailUserFargment"
+        android:name="com.devv.retrofit.DetailUserFargment"
+        android:label="DetailUserFargment"
+        tools:layout="@layout/detail_user_fragmnet">
+        <action
+            android:id="@+id/action_detailUserFargment_to_userFragmnet"
+            app:destination="@id/userFragmnet" />
+        <argument
+            android:name="username"
+            app:argType="string" />
+    </fragment>
 </navigation>
