@@ -18,7 +18,7 @@ class DetailUserFargment : Fragment(R.layout.detail_user_fragmnet) {
         super.onViewCreated(view, savedInstanceState)
         binding = DetailUserFragmnetBinding.bind(view)
 
-        val username = args.username.toString()
+        val username = args.username
 
         viewModel.setUserDetail(username)
         viewModel.getUserDetail().observe(viewLifecycleOwner, {
