@@ -17,22 +17,26 @@ class DetailUserFargment : Fragment(R.layout.detail_user_fragmnet) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = DetailUserFragmnetBinding.bind(view)
-
         val username = args.username
-
         viewModel.setUserDetail(username)
-        viewModel.getUserDetail().observe(viewLifecycleOwner, {
-            if (it != null) {
-                binding.apply {
-                    textView2.text = it.login
-                    textView3.text = it.name
-                    textView4.text = "${it.followers} Followers"
-                    textView5.text = "${it.following} Following"
-                    Glide.with(this@DetailUserFargment)
-                        .load(it.avatar_url)
-                        .into(imageView2)
-                }
+        viewModel.getdetailList.observe(viewLifecycleOwner,
+            {
+                bindUi(it)
+            })
+    }
+
+    fun bindUi(it: List<Detail>?) {
+        if (it != null) {
+            binding.apply {
+                textView2.text = it.login
+                textView3.text = it.name
+                textView4.text = "${it.followers} Followers"
+                textView5.text = "${it.following} Following"
+                Glide.with(binding.root)
+                    .load(it.avatar_url)
+                    .into(imageView2)
             }
-        })
+        }
     }
 }
+

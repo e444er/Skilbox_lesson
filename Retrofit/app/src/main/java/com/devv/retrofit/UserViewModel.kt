@@ -3,6 +3,8 @@ package com.devv.retrofit
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 
 class UserViewModel : ViewModel() {
 
@@ -18,17 +20,17 @@ class UserViewModel : ViewModel() {
         get() = isLoadingLiveData
 
     fun search(query: String) {
-        isLoadingLiveData.postValue(true)
-        repository.searchUsers(
-            query = query,
-            onComplete = { users ->
-                isLoadingLiveData.postValue(false)
+
+        viewModelScope.launch {
+            isLoadingLiveData.postValue(true)
+            try {
+                val users = repository.searchUsers(query)
                 userListLiveData.postValue(users)
-            },
-            onError = { throwable ->
-                isLoadingLiveData.postValue(false)
+            } catch (T: Throwable) {
                 userListLiveData.postValue(emptyList())
+            } finally {
+                isLoadingLiveData.postValue(false)
             }
-        )
+        }
     }
 }

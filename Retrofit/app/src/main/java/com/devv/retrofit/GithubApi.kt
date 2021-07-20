@@ -8,15 +8,15 @@ import retrofit2.http.Query
 interface GithubApi {
 
     @GET("search/users")
-    fun searchUsers(
+    suspend fun searchUsers(
         @Query("q") query: String,
-    ): Call<ServerItems<ReamteUser>>
+    ): ServerItems<ReamteUser>
 //            Response<ReamteUser>
 
     @GET("users/{username}")
-    fun getUserDetail(
+    suspend fun getUserDetail(
         @Path("username") username: String,
-    ): Call<Detail>
+    ): ServerItems<Detail>
 
     @GET("users/{username}/followers")
     fun getFollowers(

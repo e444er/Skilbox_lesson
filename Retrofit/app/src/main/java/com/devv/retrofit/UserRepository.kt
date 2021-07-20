@@ -1,34 +1,15 @@
 package com.devv.retrofit
 
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class UserRepository {
 
-    fun searchUsers(
+    suspend fun searchUsers(
         query: String,
-        onComplete: (List<ReamteUser>) -> Unit,
-        onError: (Throwable) -> Unit,
-    ) {
-        Network.api.searchUsers(query).enqueue(
-            object : Callback<ServerItems<ReamteUser>> {
-                override fun onResponse(
-                    call: Call<ServerItems<ReamteUser>>,
-                    response: Response<ServerItems<ReamteUser>>,
-                ) {
-                    if (response.isSuccessful) {
-                        onComplete(response.body()?.items.orEmpty())
-                    } else {
-                        onError(RuntimeException("RunTimeError"))
-                    }
-                }
-
-                override fun onFailure(call: Call<ServerItems<ReamteUser>>, t: Throwable) {
-                    onError(t)
-                }
-
-            }
-        )
+    ): List<ReamteUser> {
+        return withContext(Dispatchers.IO) {
+            Network.api.searchUsers(query).items
+        }
     }
 }
