@@ -7,20 +7,20 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
 class DetailViewModel : ViewModel() {
+    val repo = DetailRepository()
 
-    private val repository = DetailRepository()
-    private val userLiveData = MutableLiveData<List<Detail>>()
+    val user = MutableLiveData<Detail>()
 
-    val getdetailList: LiveData<List<Detail>>
-        get() = userLiveData
+    val getUserDetail: LiveData<Detail>
+        get() = user
 
     fun setUserDetail(username: String) {
         viewModelScope.launch {
             try {
-                val users = repository.search(username)
-                userLiveData.postValue(users)
+                val users = repo.search(username)
+                user.postValue(users)
             } catch (T: Throwable) {
-                userLiveData.postValue(emptyList())
+                user.postValue(null)
             }
         }
     }

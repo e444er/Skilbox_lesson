@@ -11,20 +11,19 @@ interface GithubApi {
     suspend fun searchUsers(
         @Query("q") query: String,
     ): ServerItems<ReamteUser>
-//            Response<ReamteUser>
 
     @GET("users/{username}")
-    suspend fun getUserDetail(
+     suspend fun getUserDetail(
         @Path("username") username: String,
-    ): ServerItems<Detail>
+    ):  Detail
 
-    @GET("users/{username}/followers")
-    fun getFollowers(
-        @Path("username") username: String,
-    ): Call<ArrayList<ReamteUser>>
-
-    @GET("users/{username}/following")
-    fun getFollowing(
-        @Path("username") username: String,
-    ): Call<ArrayList<ReamteUser>>
+//    @GET("users/{username}/followers")
+//    fun getFollowers(
+//        @Path("username") username: String,
+//    ): Call<ArrayList<ReamteUser>>
+//
+//    @GET("users/{username}/following")
+//    fun getFollowing(
+//        @Path("username") username: String,
+//    ): Call<ArrayList<ReamteUser>>
 }

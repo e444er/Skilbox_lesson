@@ -7,7 +7,7 @@ data class Detail(
     val login: String,
     val id: Long,
     val avatar_url: String?,
-    val name: String,
+    val name: String?,
     val following: Int,
     val followers: Int,
 )
