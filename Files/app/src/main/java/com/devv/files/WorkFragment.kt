@@ -1,16 +1,18 @@
 package com.devv.files
 
+
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Environment
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.devv.files.databinding.WorkFragmentBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
+import java.util.*
 
 class WorkFragment : Fragment(R.layout.work_fragment) {
 
@@ -25,39 +27,48 @@ class WorkFragment : Fragment(R.layout.work_fragment) {
         binding = WorkFragmentBinding.bind(view)
 
 
-
+        val url = binding.editText.text.toString()
         binding.button.setOnClickListener {
+
             lifecycleScope.launch(Dispatchers.IO) {
-                val edit = binding.editText.text.toString()
-                sharedPrefs.edit().putString(KEY, edit).apply()
+                val timesTamp = Date().time / 1000
+                val fileName = url.substringAfterLast("/").substringAfterLast(".")
+                if (Environment.getExternalStorageState() != Environment.MEDIA_MOUNTED) return@launch
+                val testFolder = requireContext().getExternalFilesDir("storage/files/external")
+                val testFile = File(testFolder, "${timesTamp}_$fileName.md")
+                try {
+                    testFile.outputStream().use { fileOutputStream ->
+                        Networking.api.getFile("$url")
+                            .byteStream()
+                            .use { inputStream ->
+                                inputStream.copyTo(fileOutputStream)
+                            }
+                    }
+
+                } catch (t: Throwable) {
+                    testFile.delete()
+                }
+
+                sharedPrefs.edit().putString(KEY, testFile.toString()).apply()
             }
-            dowFile()
+        }
+        val listemer =
+            SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferences, key ->
+                update()
+            }
+        lifecycleScope.launch(Dispatchers.IO) {
+            sharedPrefs.registerOnSharedPreferenceChangeListener(listemer)
         }
     }
 
-    private fun dowFile() {
+    fun update() {
         lifecycleScope.launch(Dispatchers.IO) {
-            val edit = binding.editText.text.toString()
-            if (Environment.getExternalStorageState() != Environment.MEDIA_MOUNTED) return@launch
-            val testFolder = requireContext().getExternalFilesDir("/storage/files/$edit")
-            val testFile = File(testFolder, "1601841925_README.md")
-            try {
-                testFile.outputStream().use { fileOutputStream ->
-                    Networking.api.getFile("https://gitlab.skillbox.ru/bauyrzhan_tastanbekov/android_basic/-/blob/master/README.md")
-                        .byteStream()
-                        .use { inputStream ->
-                            inputStream.copyTo(fileOutputStream)
-                        }
-                }
-            } catch (t: Throwable) {
-                testFile.delete()
-            }
+            sharedPrefs.getString(KEY, null)
         }
     }
 
     companion object {
         private const val SHARED_NAME = "1601841925_README.md"
-        private const val KEY =
-            "https://gitlab.skillbox.ru/bauyrzhan_tastanbekov/android_basic/-/blob/master/README.md"
+        private const val KEY = "key"
     }
 }
