@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navi"
+    app:startDestination="@id/mainFragment2">
+
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.devv.roomdao.list.UserFragment"
+        android:label="user_fragment"
+        tools:layout="@layout/user_fragment" >
+        <action
+            android:id="@+id/action_userFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_updateFragment2"
+            app:destination="@id/updateFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_mainFragment2"
+            app:destination="@id/mainFragment2" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.devv.roomdao.add.AddFragment"
+        android:label="add_fragment"
+        tools:layout="@layout/add_fragment" >
+        <action
+            android:id="@+id/action_addFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.devv.roomdao.update.UpdateFragment"
+        android:label="update_fragment"
+        tools:layout="@layout/update_fragment" >
+        <action
+            android:id="@+id/action_updateFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+        <argument
+            android:name="listUser"
+            app:argType="com.devv.roomdao.db.User" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment2"
+        android:name="com.devv.roomdao.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment2_to_userFragment"
+            app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_mainFragment2_to_priceFragment"
+            app:destination="@id/priceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/priceFragment"
+        android:name="com.devv.roomdao.PriceFragment"
+        android:label="PriceFragment" >
+        <action
+            android:id="@+id/action_priceFragment_to_mainFragment2"
+            app:destination="@id/mainFragment2" />
+    </fragment>
+</navigation>

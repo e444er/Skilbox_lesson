@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">RoomDao</string>
+    <string name="flo">flo</string>
+    <string name="delete">delete</string>
+    <string name="avatar">avatar</string>
+    <string name="save">Save</string>
+    <string name="avatar_url">Avatar Url</string>
+    <string name="email">Email</string>
+    <string name="lastname">LastName</string>
+    <string name="name">Name</string>
+    <string name="update">Update</string>
+</resources>
