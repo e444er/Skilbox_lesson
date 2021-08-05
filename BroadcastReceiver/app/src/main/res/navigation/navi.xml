@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navi"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/notifaFragment"
+        android:name="com.devv.broadcastreceiver.noti.NotifaFragment"
+        android:label="noti_fragment"
+        tools:layout="@layout/noti_fragment" >
+        <action
+            android:id="@+id/action_notifaFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/firebaseFragment"
+        android:name="com.devv.broadcastreceiver.firebase.FirebaseFragment"
+        android:label="firebase_fragment"
+        tools:layout="@layout/firebase_fragment" >
+        <action
+            android:id="@+id/action_firebaseFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.devv.broadcastreceiver.MainFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/main_fragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_firebaseFragment"
+            app:destination="@id/firebaseFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_notifaFragment"
+            app:destination="@id/notifaFragment" />
+    </fragment>
+</navigation>

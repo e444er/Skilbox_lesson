@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "694152017709",
+    "project_id": "onefirebase-af0ad",
+    "storage_bucket": "onefirebase-af0ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694152017709:android:448a04ab0a25bf41c885a4",
+        "android_client_info": {
+          "package_name": "com.devv.broadcastreceiver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "694152017709-331u3lc6hh0pn66rhjquvjs1htdkhck9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKhDEdVPBoAOjOUIlXqFk9vjIBKxMC3n8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "694152017709-331u3lc6hh0pn66rhjquvjs1htdkhck9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
