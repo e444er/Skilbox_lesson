@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Flow</string>
+    <string name="flow_basic">Flow Basic</string>
+    <string name="edit_two">Edit Two</string>
+    <string name="edit_three">Edit Three</string>
+    <string name="name">NAME</string>
+    <string name="checkbox">CheckBox</string>
+    <string name="flow_operators">Flow Operators</string>
+    <string name="movie">Movie</string>
+    <string name="homework">HOMEWORK</string>
+</resources>

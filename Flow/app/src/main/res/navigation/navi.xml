@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navi"
+    app:startDestination="@id/basicFragment">
+
+    <fragment
+        android:id="@+id/flowBasicFragment"
+        android:name="com.devv.flow.lesson.FlowBasicFragment"
+        android:label="flow_basic_fragment"
+        tools:layout="@layout/flow_basic_fragment" >
+        <action
+            android:id="@+id/action_flowBasicFragment_to_basicFragment"
+            app:destination="@id/basicFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/basicFragment"
+        android:name="com.devv.flow.lesson.BasicFragment"
+        android:label="basic_fragment"
+        tools:layout="@layout/basic_fragment" >
+        <action
+            android:id="@+id/action_basicFragment_to_editTwoFragment"
+            app:destination="@id/editTwoFragment" />
+        <action
+            android:id="@+id/action_basicFragment_to_flowBasicFragment"
+            app:destination="@id/flowBasicFragment" />
+        <action
+            android:id="@+id/action_basicFragment_to_threeFragment"
+            app:destination="@id/threeFragment" />
+        <action
+            android:id="@+id/action_basicFragment_to_movieFragment"
+            app:destination="@id/movieFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editTwoFragment"
+        android:name="com.devv.flow.lesson.EditTwoFragment"
+        android:label="edit_two_fragment"
+        tools:layout="@layout/edit_two_fragment" >
+        <action
+            android:id="@+id/action_editTwoFragment_to_basicFragment"
+            app:destination="@id/basicFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/threeFragment"
+        android:name="com.devv.flow.lesson.ThreeFragment"
+        android:label="three_fragment"
+        tools:layout="@layout/three_fragment" >
+        <action
+            android:id="@+id/action_threeFragment_to_basicFragment"
+            app:destination="@id/basicFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieFragment"
+        android:name="com.devv.flow.homework.MovieFragment"
+        android:label="MovieFragment" >
+        <action
+            android:id="@+id/action_movieFragment_to_basicFragment"
+            app:destination="@id/basicFragment" />
+    </fragment>
+</navigation>
