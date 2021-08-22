@@ -6,34 +6,43 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.devv.flow.R
 import com.devv.flow.databinding.MovieFragmentBinding
+import com.devv.flow.homework.ModelDatabase.Companion.getDatabase
 import com.devv.flow.lesson.exfun.textChangeFlow
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 
 class MovieFragment : Fragment(R.layout.movie_fragment) {
 
     private val binding: MovieFragmentBinding by viewBinding(MovieFragmentBinding::bind)
     private var movieAdapter: MoviewAdapter? = null
-    private val viewModel: MovieViewModel by viewModels()
+    private lateinit var viewModel: MovieViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val repo = MovieRepository(getDatabase(requireContext()).modelDao())
+        viewModel = MovieViewModel(repo)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initList()
         bindModel()
-        viewLifecycleOwner.lifecycleScope.launch {
+
             binding.editTextMovie.textChangeFlow()
-                .debounce(1000)
+                .debounce(500)
                 .distinctUntilChanged()
-                .catch { Log.d("MOVIE", "Error is : ${it}") }
-                .collect { viewModel.search(it) }
-        }
+                .mapLatest { viewModel.search(it) }
+                .flowOn(Dispatchers.IO)
+                .catch {  Toast.makeText(requireContext(), "Search",Toast.LENGTH_LONG).show()}
+                .onEach { Log.d("onEach", "onEach is : ${it}")}
+                .launchIn(viewLifecycleOwner.lifecycleScope)
     }
+
 
     private fun bindModel() {
         lifecycleScope.launchWhenStarted {
@@ -55,6 +64,7 @@ class MovieFragment : Fragment(R.layout.movie_fragment) {
                             .show()
                         Log.d("MOVIE", "Error is 2 : ${uiState.msg}")
                     }
+                    else -> Log.d("MOVIE", "Error")
                 }
             }
         }

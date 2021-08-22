@@ -2,19 +2,14 @@ package com.devv.flow.homework
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-class MovieViewModel : ViewModel() {
+class MovieViewModel(private val repo : MovieRepository) : ViewModel() {
 
-    private val repo = MovieRepository()
+    private val _movieList = MutableStateFlow<Resull?>(Resull.Empty)
 
-    private val _movieList = MutableStateFlow<Resull>(Resull.Empty)
-
-    val movieList: StateFlow<Resull>
+    val movieList: StateFlow<Resull?>
         get() = _movieList
 
     fun search(s: String) {
@@ -27,4 +22,13 @@ class MovieViewModel : ViewModel() {
                 }
         }
     }
+
+    //    fun search(s: String) {
+//            repo.search(s)
+//                .onStart { _movieList.value = Resull.Loading  }
+//                .onEach {  fav -> _movieList.value = Resull.Success(fav) }
+//                .catch { _movieList.value = Resull.Error(it) }
+//                .launchIn(viewModelScope)
+//        }
+//    }
 }
