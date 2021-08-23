@@ -1,7 +1,6 @@
 package com.devv.roomdao.add
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -10,12 +9,15 @@ import androidx.navigation.fragment.findNavController
 import com.devv.roomdao.R
 import com.devv.roomdao.databinding.AddFragmentBinding
 import com.devv.roomdao.db.User
+import com.devv.roomdao.di.ViewModelFactory
 import com.devv.roomdao.list.UserViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddFragment : Fragment(R.layout.add_fragment) {
     private var _binding: AddFragmentBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: UserViewModel by viewModels()
+    private val viewModel: UserViewModel by viewModels{ ViewModelFactory() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

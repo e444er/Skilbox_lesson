@@ -10,12 +10,15 @@ import androidx.navigation.fragment.navArgs
 import com.devv.roomdao.R
 import com.devv.roomdao.databinding.UpdateFragmentBinding
 import com.devv.roomdao.db.User
+import com.devv.roomdao.di.ViewModelFactory
 import com.devv.roomdao.list.UserViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class UpdateFragment : Fragment(R.layout.update_fragment) {
     private var _binding: UpdateFragmentBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: UserViewModel by viewModels()
+    private val viewModel: UserViewModel by viewModels{ ViewModelFactory() }
     private val args: UpdateFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

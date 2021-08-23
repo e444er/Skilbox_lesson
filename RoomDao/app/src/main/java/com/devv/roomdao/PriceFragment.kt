@@ -3,14 +3,14 @@ package com.devv.roomdao
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import com.devv.roomdao.db.Databasee
 import com.devv.roomdao.db.Price
-import com.devv.roomdao.db.UserDatabase
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class PriceFragment() : Fragment(R.layout.price_fragment) {
-    private val userDao = context?.let { UserDatabase.getDatabase(it).userDao() }
-    private val priceDao = context?.let { UserDatabase.getDatabase(it).priceDao() }
+    private val userDao = Databasee.instance.userDao()
+    private val priceDao = Databasee.instance.priceDao()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

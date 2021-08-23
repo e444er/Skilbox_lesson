@@ -1,24 +1,19 @@
 package com.devv.roomdao.list
 
-import android.app.Application
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.devv.roomdao.UserRepository
 import com.devv.roomdao.db.User
-import com.devv.roomdao.db.UserDatabase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class UserViewModel(app: Application) : AndroidViewModel(app) {
-    val readAllData: LiveData<List<User>>
-    private val repo: UserRepository
+@HiltViewModel
+class UserViewModel @Inject constructor(private val repo: UserRepository) : ViewModel() {
 
-    init {
-        val userDao = UserDatabase.getDatabase(app).userDao()
-        repo = UserRepository(userDao)
-        readAllData = repo.getAllUsers
-    }
+    val readAllData: LiveData<List<User>> = repo.getAllUsers
 
     fun saveUsers(user: User) {
         try {

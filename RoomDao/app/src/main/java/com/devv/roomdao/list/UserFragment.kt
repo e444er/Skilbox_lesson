@@ -10,11 +10,14 @@ import com.devv.roomdao.R
 import com.devv.roomdao.adapter.UserAdapter
 import com.devv.roomdao.databinding.UserFragmentBinding
 import com.devv.roomdao.db.User
+import com.devv.roomdao.di.ViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class UserFragment : Fragment(R.layout.user_fragment) {
 
     private lateinit var binding: UserFragmentBinding
-    private val viewModel: UserViewModel by viewModels()
+    private val viewModel: UserViewModel by viewModels{ ViewModelFactory() }
     private var userAdapter: UserAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
