@@ -1,0 +1,7 @@
+package com.devv.dependencyinjection.models
+
+data class TvShowItem(
+    val id: Int,
+    val image: Image,
+    val name: String
+)

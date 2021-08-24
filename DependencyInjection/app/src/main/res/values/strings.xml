@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">DependencyInjection</string>
+    <string name="avatar">avatar</string>
+    <string name="episodes">Episodes</string>
+    <string name="tv_shows">Tv Shows</string>
+    <string name="up_coming">Up Coming</string>
+    <string name="popular">Popular</string>
+</resources>
