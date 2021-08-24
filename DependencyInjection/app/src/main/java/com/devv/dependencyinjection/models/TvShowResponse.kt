@@ -1,3 +1,3 @@
 package com.devv.dependencyinjection.models
 
-class TvShowResponse : ArrayList<TvShowItem>()
+class TvShowResponse<T> : ArrayList<TvShowItem>()
