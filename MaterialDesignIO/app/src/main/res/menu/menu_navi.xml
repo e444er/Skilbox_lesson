@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/afragment"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home"/>
+    <item
+        android:id="@+id/bfragment"
+        android:icon="@drawable/ic_subway"
+        android:title="@string/subway"/>
+    <item
+        android:id="@+id/cfragment"
+        android:icon="@drawable/ic_baseline_ac_unit_24"
+        android:title="@string/star"/>
+    <item
+        android:id="@+id/dfragment"
+        android:icon="@drawable/ic_baseline_dark_mode_24"
+        android:title="@string/dark"/>
+    <item
+        android:id="@+id/ffragment"
+        android:icon="@drawable/ic_baseline_two_wheeler_24"
+        android:title="@string/wheeler"/>
+
+</menu>

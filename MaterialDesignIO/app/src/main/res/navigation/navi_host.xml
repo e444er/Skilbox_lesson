@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navi_host"
+    app:startDestination="@id/afragment">
+
+    <fragment
+        android:id="@+id/afragment"
+        android:name="com.devv.materialdesignio.AFragment"
+        android:label="Home"
+        tools:layout="@layout/a_fragment" />
+    <fragment
+        android:id="@+id/bfragment"
+        android:name="com.devv.materialdesignio.BFragment"
+        android:label="Subway"
+        tools:layout="@layout/b_fragment" />
+    <fragment
+        android:id="@+id/cfragment"
+        android:name="com.devv.materialdesignio.CFragment"
+        android:label="Star"
+        tools:layout="@layout/c_fragment" />
+    <fragment
+        android:id="@+id/dfragment"
+        android:name="com.devv.materialdesignio.DFragment"
+        android:label="Dark"
+        tools:layout="@layout/d_fragment"/>
+    <fragment
+        android:id="@+id/ffragment"
+        android:name="com.devv.materialdesignio.FFragment"
+        android:label="Wheeler"
+        tools:layout="@layout/f_fragment" />
+</navigation>
