@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navi"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.devv.scopedstoragee.MainFragment"
+        android:label="main_fragmnet"
+        tools:layout="@layout/main_fragmnet" >
+        <action
+            android:id="@+id/action_mainFragment_to_testFragment"
+            app:destination="@id/testFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_docFragment"
+            app:destination="@id/docFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/testFragment"
+        android:name="com.devv.scopedstoragee.test.TestFragment"
+        android:label="TestFragment"
+        tools:layout="@layout/test_fragment">
+        <action
+            android:id="@+id/action_testFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_testFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.devv.scopedstoragee.test.AddFragment"
+        android:label="add_fragment"
+        tools:layout="@layout/add_fragment" >
+        <action
+            android:id="@+id/action_addFragment_to_testFragment"
+            app:destination="@id/testFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/docFragment"
+        android:name="com.devv.scopedstoragee.test.DocFragment"
+        android:label="doc_fragment"
+        tools:layout="@layout/doc_fragment" >
+        <action
+            android:id="@+id/action_docFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+</navigation>
